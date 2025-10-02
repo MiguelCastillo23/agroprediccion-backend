@@ -10,7 +10,7 @@ def create_app():
     # Habilitar CORS para permitir requests desde frontend
     CORS(app, resources={
         r"/api/*": {
-            "origins": "*",
+            "origins": Config.ALLOWED_ORIGINS if hasattr(Config, 'ALLOWED_ORIGINS') else "*",
             "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
             "allow_headers": ["Content-Type", "Authorization"]
         }
